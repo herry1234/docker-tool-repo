@@ -1,0 +1,20 @@
+# We use the local repo in artifactory rather than the virtual repo (SPVSS-IH-PYPI-group) so that our custom versions (for Fabric) is recognized.  The downside of this method is that we have to manually make sure everything is present. To manually update packages to their latest versions, run:
+# pip install twine wheel && pip wheel -r requirements.txt && twine upload -r artifactory wheelhouse/*
+#--index-url https://engci-maven-master.cisco.com/artifactory/api/pypi/SPVSS-IH-PYPI/simple
+
+# add back the standard pypi to get extras like natsort
+#--extra-index-url https://pypi.python.org/simple
+#--extra-index-url https://pypi.python.org/pypi
+
+setuptools>=5.4
+requests
+#fabric==1.10.99# -e git+https://github.com/mikeage/fabric.git#egg=fabric
+fabric>=1.10.2
+scp==0.8.0
+sshtunnel==0.0.3
+natsort   # XXX need to get this in local repo, meanwhile do pip install natsort after the pip install -r requirements.txt
+python-novaclient
+python-heatclient
+python-openstackclient
+pyyaml
+pyfscache
